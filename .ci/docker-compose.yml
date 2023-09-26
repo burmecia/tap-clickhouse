@@ -1,0 +1,10 @@
+version: '3'
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:22.5.1.2079
+    ports:
+      - "8123:8123"
+    environment:
+      - CLICKHOUSE_USER=test_user
+      - CLICKHOUSE_PASSWORD=default
+      - CLICKHOUSE_DB=default
