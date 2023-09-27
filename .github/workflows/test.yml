@@ -8,13 +8,22 @@ jobs:
   pytest:
     timeout-minutes: 10
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: clickhouse/clickhouse-server:22.5.1.2079
+        env:
+          CLICKHOUSE_USER: test_user
+          CLICKHOUSE_PASSWORD: default
+          CLICKHOUSE_DB: default
+        ports:
+          - "8123:8123"
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.10", "3.11"]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
@@ -25,11 +34,6 @@ jobs:
     - name: Install dependencies
       run: |
         poetry install
-    - name: Start test ClickHouse
-      run: docker-compose -f ".ci/docker-compose.yml" up -d --build
     - name: Test with pytest
       run: |
         poetry run pytest
-    - name: Stop test ClickHouse
-      if: always()
-      run: docker-compose -f ".ci/docker-compose.yml" down
