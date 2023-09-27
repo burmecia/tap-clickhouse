@@ -65,7 +65,8 @@
           "metadata": {
             "inclusion": "available",
             "forced-replication-method": "",
-            "schema-name": "default"
+            "schema-name": "default",
+            "selected": true
           }
         }
       ]
