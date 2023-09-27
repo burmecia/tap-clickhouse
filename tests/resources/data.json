@@ -1,0 +1,74 @@
+{
+  "streams": [
+    {
+      "tap_stream_id": "default-test_table",
+      "table_name": "test_table",
+      "replication_method": "",
+      "schema": {
+        "properties": {
+          "id": {
+            "type": [
+              "integer"
+            ]
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": [
+              "string"
+            ]
+          },
+          "name": {
+            "type": [
+              "string"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "updated_at",
+          "name"
+        ]
+      },
+      "is_view": false,
+      "stream": "default-test_table",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "updated_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "name"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "forced-replication-method": "",
+            "schema-name": "default"
+          }
+        }
+      ]
+    }
+  ]
+}

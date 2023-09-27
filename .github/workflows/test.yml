@@ -1,5 +1,4 @@
 ### A CI workflow template that runs linting and python testing
-### TODO: Modify as needed or as desired.
 
 name: Test tap-clickhouse
 
@@ -7,6 +6,7 @@ on: [push]
 
 jobs:
   pytest:
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -25,6 +25,11 @@ jobs:
     - name: Install dependencies
       run: |
         poetry install
+    - name: Start test ClickHouse
+      run: docker-compose -f ".ci/docker-compose.yml" up -d --build
     - name: Test with pytest
       run: |
         poetry run pytest
+    - name: Stop test ClickHouse
+      if: always()
+      run: docker-compose -f ".ci/docker-compose.yml" down
