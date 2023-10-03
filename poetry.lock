@@ -598,7 +598,7 @@ sqlalchemy = ">=1.4.24,<1.5"
 type = "git"
 url = "https://github.com/akurdyukov/clickhouse-sqlalchemy.git"
 reference = "HEAD"
-resolved_reference = "8488f9a9ae6453976b4724e8971f2e638bdf36c2"
+resolved_reference = "dce781e77b8a670cca620216ed062780d2375678"
 
 [[package]]
 name = "colorama"

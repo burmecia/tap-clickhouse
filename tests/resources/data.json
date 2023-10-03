@@ -4,6 +4,9 @@
       "tap_stream_id": "default-test_table",
       "table_name": "test_table",
       "replication_method": "",
+      "key_properties": [
+        "id"
+      ],
       "schema": {
         "properties": {
           "id": {
