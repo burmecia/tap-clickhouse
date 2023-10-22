@@ -1,0 +1,35 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: "tap-clickhouse"
+default_environment: test
+environments:
+  - name: test
+plugins:
+  extractors:
+    - name: "tap-clickhouse"
+      namespace: "tap_clickhouse"
+      pip_url: -e .
+      capabilities:
+        - state
+        - catalog
+        - discover
+        - about
+        - stream-maps
+      config:
+        username: "test_user"
+        password: "default"
+        database: "default"
+      settings:
+        - name: driver
+        - name: username
+        - name: password
+          kind: password
+        - name: host
+        - name: port
+        - name: database
+        - name: secure
+        - name: verify
+  loaders:
+    - name: target-jsonl
+      variant: andyh1203
+      pip_url: target-jsonl
