@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "tap-clickhouse"
+name = "akurdyukov-tap-clickhouse"
 version = "0.0.1"
 description = "`tap-clickhouse` is a Singer tap for ClickHouse, built with the Meltano Singer SDK."
 readme = "README.md"
@@ -9,6 +9,9 @@ keywords = [
     "ClickHouse",
 ]
 license = "Apache-2.0"
+packages = [
+    { include = "tap_clickhouse" }
+]
 
 [tool.poetry.dependencies]
 python = ">=3.7.1,<4"

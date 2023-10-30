@@ -1,6 +1,6 @@
 # tap-clickhouse
 
-`tap-clickhouse` is a Singer tap for ClickHouse.
+`tap-clickhouse` is a Singer tap for ClickHouse. Unlike 'airbyte' variant this one does not need docker to run.
 
 Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
