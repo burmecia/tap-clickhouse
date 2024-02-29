@@ -6,6 +6,7 @@ This includes ClickHouseStream and ClickHouseConnector.
 from __future__ import annotations
 
 from typing import Any, Iterable
+from datetime import datetime
 
 import sqlalchemy  # noqa: TCH002
 from singer_sdk import SQLConnector, SQLStream
@@ -105,6 +106,12 @@ class ClickHouseStream(SQLStream):
     """Stream class for ClickHouse streams."""
 
     connector_class = ClickHouseConnector
+
+    def get_starting_replication_key_value(self, context: dict | None):
+        key_value = super().get_starting_replication_key_value(context)
+        if type(key_value) is datetime:
+            key_value = key_value.strftime("%Y-%m-%d %H:%M:%S")
+        return key_value
 
     def get_records(self, partition: dict | None) -> Iterable[dict[str, Any]]:
         """Return a generator of record-type dictionary objects.
