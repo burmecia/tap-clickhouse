@@ -109,7 +109,7 @@ class ClickHouseStream(SQLStream):
 
     def get_starting_replication_key_value(self, context: dict | None):
         key_value = super().get_starting_replication_key_value(context)
-        if self.replication_key == 'timestamp':
+        if key_value and self.replication_key == 'timestamp':
             # '2024-02-28T21:17:44+00:00' -> '2024-02-28T21:17:44'
             match = re.search(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}', key_value)
             if match:
